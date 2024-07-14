@@ -1,30 +1,66 @@
 <template>
   <div class="page-header-container">
-    <el-dropdown @command="onChangeLanguages">
-      <span class="el-dropdown-link">
-        {{ languages }}
-        <el-icon class="el-icon--right">
-          <arrow-down />
+    <el-page-header :icon="null" @back="onClickMenu" style="padding: 6px 20px;border-bottom: 1px solid #e7e7e8;">
+      <template #title>
+        <el-icon size="18">
+          <Menu />
         </el-icon>
-      </span>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item>Action 1</el-dropdown-item>
-          <el-dropdown-item>Action 2</el-dropdown-item>
-        </el-dropdown-menu>
       </template>
-    </el-dropdown>
+      <!-- 标题 -->
+      <template #content>
+        <div style="cursor: pointer;">
+          {{ $t('header.title') }}
+        </div>
+      </template>
+      <template #extra>
+        <el-space size="large">
+          <el-dropdown @command="onChangeLanguages">
+            <span style="display: flex;align-items: center;cursor: pointer;">
+              {{ $t('header.languages') }}
+              <el-icon color="#cccccc">
+                <CaretBottom />
+              </el-icon>
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item v-for="(item, index) in store.state.languageList" :key="index" :command="item.code">
+                  <el-icon :style="{ opacity: item.code === store.state.locale ? 1 : 0 }" color="#cccccc">
+                    <CaretRight />
+                  </el-icon>
+                  {{ item.label }}
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+          <el-icon size="18">
+            <Bell />
+          </el-icon>
+          <el-avatar :size="18" class="mr-3"
+            src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+        </el-space>
+      </template>
+    </el-page-header>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { useStore } from '@/store'
+import { languageList } from '@/utils/const'
+import { mapMutations } from 'vuex';
+import { i18n } from '@/main'
 
+const store = useStore()
+const { setState } = mapMutations(['setState'])
 
-const languages = ref('选择语言')
+function onChangeLanguages(code = '') {
+  store.commit('setState', { locale: code }) // 全局语言环境名称
+  i18n.global.locale.value = code // 修改自定义文本语言环境
+}
 
-function onChangeLanguages(params: any) {
-  console.log(params)
+function onClickMenu() {
+  console.log('1')
+  store.commit('setState', { drawer: !store.state.drawer })
 }
 </script>
 
