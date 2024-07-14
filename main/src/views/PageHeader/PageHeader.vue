@@ -1,22 +1,33 @@
 <template>
-  <!-- <el-page-header>
-    <template #breadcrumb>
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: './page-header.html' }">
-          homepage
-        </el-breadcrumb-item>
-        <el-breadcrumb-item><a href="./page-header.html">route 1</a></el-breadcrumb-item>
-        <el-breadcrumb-item>route 2</el-breadcrumb-item>
-      </el-breadcrumb>
-    </template>
-</el-page-header> -->
-  <el-date-picker type="datetime" placeholder="Select date and time" />
+  <div class="page-header-container">
+    <el-dropdown @command="onChangeLanguages">
+      <span class="el-dropdown-link">
+        {{ languages }}
+        <el-icon class="el-icon--right">
+          <arrow-down />
+        </el-icon>
+      </span>
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item>Action 1</el-dropdown-item>
+          <el-dropdown-item>Action 2</el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
+  </div>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'PageHeader',
+<script lang="ts" setup>
+import { ref } from 'vue';
+
+
+const languages = ref('选择语言')
+
+function onChangeLanguages(params: any) {
+  console.log(params)
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+@import './index.less';
+</style>
