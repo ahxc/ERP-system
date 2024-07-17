@@ -45,5 +45,5 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '@/assets/base.less';
+@import '@/assets/style/app.less';
 </style>

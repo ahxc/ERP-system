@@ -5,22 +5,7 @@ import { store, key } from './store'
 import { registerMicroApps, start } from 'qiankun';
 import { createI18n } from 'vue-i18n'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-
-// 准备翻译的语言环境信息
-const messages = {
-  en: {
-    header: {
-      languages: 'Languages',
-      title: 'hello world',
-    },
-  },
-  zhCn: {
-    header: {
-      languages: '选择语言',
-      title: '你好，世界',
-    },
-  }
-}
+import { messages } from '@/assets/language/index'
 
 export const i18n = createI18n({
   globalInjection: true, //全局生效$t

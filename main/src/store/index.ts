@@ -1,12 +1,13 @@
 import { initGlobalState } from 'qiankun'
 import { InjectionKey } from 'vue'
 import { createStore, Store, useStore as baseUseStore } from 'vuex'
+import { option } from '@/utils/type'
 
 // 为 store state 声明类型
 export interface State {
   locale?: string, // 当前语言
   title?: string,
-  languageList?: object[], // 可选语言列表
+  languageList?: option[], // 可选语言列表
   drawer?: boolean,
 }
 
