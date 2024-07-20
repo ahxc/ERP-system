@@ -16,12 +16,15 @@ export const key: InjectionKey<Store<State>> = Symbol()
 
 const initState = () => {
   return {
-    locale: 'zhCn', // 当前语言，命名规则以element语言库为标准
+    // 当前语言，命名规则以element语言库为标准
+    locale: 'zhCn',
     title: '作家助手', // 页面标题
+    // 语言候选项
     languageList: [
       { code: 'zhCn', label: "简体中文" },
       { code: 'en', label: "English" },
     ],
+    // 侧边栏打开状态
     drawer: false,
   }
 }

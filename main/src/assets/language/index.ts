@@ -8,6 +8,9 @@ export const messages = {
       languages: 'Languages',
       title: 'Stitching Monster',
     },
+    navbar: {
+      writingAssit: ''
+    },
   },
   zhCn: {
     header: {

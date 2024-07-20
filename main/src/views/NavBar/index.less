@@ -1,15 +1,16 @@
-.drawer {
-  .el-page-header {
-    padding: 12px 20px;
-    border-bottom: 1px solid #e7e7e8;
+@import '@/assets/style/common.less';
 
-    /deep/ .el-page-header__title,
-    /deep/ .el-page-header__extra {
-      line-height: 0;
+.nav-bar-container {
+  height: 100%;
+
+  :deep(.el-drawer__body) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0;
+
+    .el-scrollbar {
+      flex-grow: 1;
     }
-  }
-
-  /deep/ .el-drawer__body {
-    padding: 0 !important;
   }
 }

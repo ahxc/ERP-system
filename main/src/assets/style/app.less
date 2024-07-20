@@ -1,3 +1,7 @@
+/* 
+全局样式写在这里
+*/
+
 body {
   margin: 0;
 }
@@ -15,5 +19,24 @@ body {
   .content-container {
     flex-grow: 1;
     padding: 0;
+  }
+}
+
+.common-page-header {
+  padding: 12px 20px;
+  border-bottom: 1px solid #e7e7e8;
+
+  .el-divider--vertical {
+    border: none;
+    margin-left: 0;
+  }
+
+  .el-page-header__left {
+    margin-right: 0;
+  }
+
+  .el-page-header__title,
+  .el-page-header__extra {
+    line-height: 0;
   }
 }
